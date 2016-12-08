@@ -1,0 +1,13 @@
+.highlight {
+	/*padding: 0 0.2em;*/
+    background-color: #b90504;
+    color: white;
+}
+strong {
+	color: #b90504;
+}
+
+.reveal section img {
+	border:none;
+	box-shadow:none;
+}

@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>ReVACNN</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="css/theme/lens_nmf.css">
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<p style="font-size:1.3em"> <strong style="color:black">ReVACNN</strong>: Steering Convolutional Neural Network via Real-Time Visual Analytics </p><br>
+					<p> 
+						Sunghyo Chung, Cheonbok Park, <strong>Sangho Suh</strong>, <br>Kyeongpil Kang, Jaegul Choo, Bum Chul Kwon <br>
+						<br>
+					</p>
+					<p>
+						Korea University, IBM T.J. Watson Research Center	
+					</p>
+						
+				</section>
+				<section>
+					<h3> Introduction </h3>
+					<strong style="color:black">Problem</strong>
+					<ul>
+						<li>While significant achievements have been made by deep learning, the understanding of underlying processes behind it's model received less examination.</li>
+						<li>Training deep learning is a time consuming task that requires repetitive model selection and hyper-parameter tuning.</li>
+						<li>Deep learning models are prone to underfitting, overfitting</li>
+					</ul>
+				</section>
+				<section>
+					<h3> Introduction </h3>
+					<strong style="color:black">Solution approach</strong>
+					<ul>
+						<li>Our solution to this problem is to provide Real-time visualization + Dynamic model steering</li>
+						<span style="visibility: hidden"> 
+						<li>Training deep learning is a time consuming task that requires repetitive model selection and hyper-parameter tuning.</li>
+						<li>Deep learning models are prone to underfitting, overfitting</li>
+						</span>
+					</ul>
+				</section>
+				<section>
+					<h3> Overview </h3>
+					<img src="./img/overview.png">
+				</section>
+				<section>
+					<h3>Network visualization</h3>
+					<img src="./img/network_view.png" style="width:50%" alt="network view">
+					<ul style="font-size:0.6em">
+						<li>Provides an overview of the activation of filters in layers</li>
+						<li>Images represent the activations for the given input image</li>
+						<li>Filters can be easily added or deleted in the hidden layer with simple interactions</li>
+						<li>Users can selectively “freeze” particular nodes/layers to reduce the training time</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Filter-level 2D embedding visualization</h3>
+					<img src="./img/embedding_view.png" alt="embedding view" style="width:50%">
+					<ul style="font-size:0.6em">
+						<li>Users can selectively “freeze” particular nodes/layers to reduce the training time</li>
+						<li>t-SNE view provides users with the capabilities of node-level as well as layer-level exploration.</li>
+						<li>Filters are shown as images and along with the circle showing the degree of convergence as the total sum of the gradients over the last epoch.</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Usage scenarios</h3>
+					<strong style="color:black">Cluster pattern</strong>
+					<img src="./img/cluster_pattern.png">
+					<p style="font-size:0.8em">
+						A model with filters belonging to a particular cluster tends to have low accuracy while well-trained model shows no cluster pattern.
+					</p>
+				</section>
+				<section>
+					<h3>Usage scenarios</h3>
+					<strong style="color:black">RGB pattern</strong>
+					<img src="./img/rgb_pattern.png">
+					<p style="font-size:0.6em">
+						For the first convolutional layer, a model with filters showing single color channel tends to have low accuracy while well-trained model usually contains all three color channels. 
+					</p>					
+				</section>
+				<section>
+					<h3>Usage scenarios</h3>
+					<strong style="color:black">Freezing layers</strong>
+					<ul>
+						<li style="font-size:0.7em">
+							Freezing layers skip the gradient descent update and enable satisfactory reduction of training time without significant loss in performance.
+						</li>						
+					</ul>
+
+					<img src="./img/freeze_layers.png" style="width:40%">
+					<p style="font-size:0.6em">Epoch series of original model and Conv1 Skipped (Epoch at 6) model on CIFAR-10 dataset. <br>Vertical dotted line denotes a particular epoch for layer freeze.</p>
+				</section>
+					<section>
+					<h3>Appendix</h3>
+					<strong style="color:black">Freezing layers</strong>
+					<ul style="font-size:0.5em">
+						<li>Comparison between original model and two Freeze Layer models on several measures. Freeze Layer models demonstrate faster convergence with near-equivalent performance. In particular, validation set accuracy is almost the same. Each graph’s vertical dotted line denotes the epoch in which freeze layer occurs.</li>
+					</ul>
+						<img src="./img/freeze_layers_exp.png" alt="experiment results" style="width:65%">
+					</section>
+				<section>
+					<h3>Conclusion</h3>
+					<strong style="color:black">Summary</strong>
+					<ul>
+						<li>ReVACNN is a real-time visual analytics system for a convolutional neural network. </li>
+						<li>Supports exploring and steering the network by visualizing its layers and nodes. </li>
+						<li>Provides a filter-level 2D embedding view by applying t-SNE to various filter information.</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Conclusion</h3>
+					<strong style="color:black">Future work</strong>
+					<ul>
+						<li>Extend to visualize larger model(Residual network), add more interactive steering features.</li>
+					</ul>					
+				</section>
+				<section>
+					<br>
+					<p style="font-size:2.6em">Thank you</p>
+					<p style="font-size:1.3em"> Q & A </p>
+					<p style="font-size:0.7em"> sh31659@gmail.com </p>
+					<p style="font-size:0.7em"> sanghosuh.github.io </p>
+				</section>				
+				<section>
+					<h3>Appendix</h3>
+					<strong style="color:black">Demo</strong><br>
+					<span style="font-size:0.8em">Javascript version of ReVACNN demo is available at the link below.</span>
+					<ul style="font-size:0.8em">
+						<li>http://sunghyo.github.io/kdd_net/convnetjs/demo/cifar10_vis.html</li>
+					</ul>
+					<strong style="color:black">Open source</strong><br>
+					<span style="font-size:0.7em">ReVACNN is an open source project available at github.</span>
+					<ul style="font-size:0.7em">
+						<li>https://github.com/Sunghyo/revacnn (Tensorflow - Keras version)</li>
+						<li>https://github.com/davianlab/deepVis (Javascript version)</li>
+					</ul><br>
+					<strong style="color:black">Workshop paper</strong>
+					<ul style="font-size:0.7em">
+						<li>ACM SIGKDD Workshop on Interactive Data Exploration and Analytics (KDD-IDEA), 2016, San Francisco, CA (http://poloclub.gatech.edu/idea2016/papers/p30-chung.pdf)</li>
+						<li>FILM at NIPS - Future of Interactive Learning Machines Workshop, 2016, Barcelona, Spain (http://www.filmnips.com/accepted-papers/)</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Appendix</h3>
+					<strong style="color:black">Implementaion details</strong>
+					<img src="./img/implementation_details.png" alt="implementation details" style="width:70%">
+					<ul style="font-size:0.7em">
+						<li>The system consists mainly of web front end and server backend.</li>
+						<li>The server, which consists of flasks, is connected with deep learning framework, through which trains model in real time and sends the training status to visualization and through which, provides interactive steering.</li>
+					</ul>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
