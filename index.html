@@ -84,7 +84,7 @@
 					<h3>Usage scenarios</h3>
 					<strong style="color:black">Cluster pattern</strong>
 					<img src="./img/cluster_pattern.png">
-					<p style="font-size:0.8em">
+					<p style="font-size:0.6em">
 						A model with filters belonging to a particular cluster tends to have low accuracy while well-trained model shows no cluster pattern.
 					</p>
 				</section>
@@ -104,18 +104,9 @@
 							Freezing layers skip the gradient descent update and enable satisfactory reduction of training time without significant loss in performance.
 						</li>						
 					</ul>
-
 					<img src="./img/freeze_layers.png" style="width:40%">
-					<p style="font-size:0.6em">Epoch series of original model and Conv1 Skipped (Epoch at 6) model on CIFAR-10 dataset. <br>Vertical dotted line denotes a particular epoch for layer freeze.</p>
+					<p style="font-size:0.6em">Epoch series of original model and Conv1 Skipped (Epoch at 6) model on CIFAR-10 dataset. <br>Vertical dotted line denotes a particular epoch for layer freeze.</p>								
 				</section>
-					<section>
-					<h3>Appendix</h3>
-					<strong style="color:black">Freezing layers</strong>
-					<ul style="font-size:0.5em">
-						<li>Comparison between original model and two Freeze Layer models on several measures. Freeze Layer models demonstrate faster convergence with near-equivalent performance. In particular, validation set accuracy is almost the same. Each graph’s vertical dotted line denotes the epoch in which freeze layer occurs.</li>
-					</ul>
-						<img src="./img/freeze_layers_exp.png" alt="experiment results" style="width:65%">
-					</section>
 				<section>
 					<h3>Conclusion</h3>
 					<strong style="color:black">Summary</strong>
@@ -139,8 +130,17 @@
 					<p style="font-size:0.7em"> sh31659@gmail.com </p>
 					<p style="font-size:0.7em"> sanghosuh.github.io </p>
 				</section>				
+				
 				<section>
-					<h3>Appendix</h3>
+				<h3>Appendix</h3>
+					<strong style="color:black">Freezing layers</strong>
+					<ul style="font-size:0.5em">
+						<li>Comparison between original model and two Freeze Layer models on several measures. Freeze Layer models demonstrate faster convergence with near-equivalent performance. In particular, validation set accuracy is almost the same. Each graph’s vertical dotted line denotes the epoch in which freeze layer occurs.</li>
+					</ul>
+						<img src="./img/freeze_layers_exp.png" alt="experiment results" style="width:65%">
+				</section>					
+				<section>
+				<h3>Appendix</h3>
 					<strong style="color:black">Demo</strong><br>
 					<span style="font-size:0.8em">Javascript version of ReVACNN demo is available at the link below.</span>
 					<ul style="font-size:0.8em">
